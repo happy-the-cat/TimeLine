@@ -1,0 +1,23 @@
+Credits:
+Freepik
+
+Color Scheme HEX:
+Scarlet logo - #ff3501
+
+
+Resource Links:
+https://www.flaticon.com/
+https://www.flaticon.com/authors/pixel-perfect
+https://www.flaticon.com/authors/freepik
+https://www.flaticon.com/authors/icongeek26
+
+
+References:
+https://stackoverflow.com/a/37375449
+https://www.w3schools.com/java/java_files_create.asp
+https://www.journaldev.com/881/java-append-to-file
+https://www.journaldev.com/878/java-write-to-file
+https://stackoverflow.com/a/12805134
+https://tagmycode.com/snippet/9691/javafx-pass-data-between-controllers#.YA4bEugzY5s
+https://stackoverflow.com/questions/19788661/change-javafx-tab-default-look
+

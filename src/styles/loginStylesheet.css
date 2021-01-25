@@ -1,0 +1,45 @@
+/* CSS Stylesheet for Entry/Login Scene */
+.root {
+    -fx-font-size: 14px;
+    -fx-background-color: #eeeeee;
+    -fx-font-family: "Tahoma";
+}
+
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-color: #eeeeee;
+    -fx-border-width: 0 0 0.5 0;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 5 0;  /* pad bottom */
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-text-fill: #222831;
+    -fx-background-color: #EEEEEE;  /* or  #bbf1fa light blue */
+    -fx-background-radius: 50;
+    -fx-font-size: 16px;
+    -fx-padding: 7 30 7 30;  /* up right down left */
+    -fx-effect: dropshadow( three-pass-box , #EEEEEE, 5, 0.0, 0, 1 );  /* drop shadow effect */
+}
+.button:hover {
+    -fx-background-color: white;
+}
+.button:pressed {
+    -fx-background-color: #C9FBFF;
+}
+
+#appName {
+    -fx-font-family: "Matura MT Script Capitals";
+    -fx-font-size: 36px;
+    -fx-text-fill: #ff3501;
+}
+
+#header1 {
+    -fx-font-size: 22px;
+    -fx-text-fill: #C9FBFF;
+    -fx-font-weight: bold;
+}

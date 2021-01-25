@@ -1,0 +1,66 @@
+/* CSS Stylesheet for Main Scene */
+.root {
+    -fx-font-family: Tahoma;
+    -fx-font-size: 12;
+    -fx-background-color: white;
+}
+/* Labels */
+.label {
+    -fx-padding: 5 0 5 0;
+}
+#appName {
+    -fx-font-family: "Matura MT Script Capitals";
+    -fx-font-size: 28px;
+    -fx-text-fill: #ff3501;
+    -fx-effect: dropshadow(three-pass-box, azure, 50, 0, 3, 3);  /* Drop shadow? */
+}
+
+/* Text Fields */
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-color: #eeeeee;
+    -fx-border-width: 0 0 0.5 0;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 5 0;  /* pad bottom */
+}
+
+/* Tab Pane */
+.tab-pane:top > .tab-header-area { /* remove gap before 1st tab header */
+    -fx-padding: 1 2 0 0;
+}
+.tab-pane .tab-header-area .tab-header-background {  /* remove color of bg of tab header */
+    -fx-opacity: 0;
+}
+.tab-pane {
+    -fx-tab-min-width: 180;  /* tab min width */
+    -fx-tab-min-height: 40;  /* tab min height */
+}
+.tab {
+    -fx-background-insets: 0 5 0 0;  /* gap between tabs */
+}
+.tab-pane .tab {  /* tab */
+    -fx-background-color: #EEEEEE;
+}
+.tab-pane .tab:selected {  /* selected tab */
+    -fx-background-color: #303841;
+}
+.tab .tab-label {  /* tab labels */
+    -fx-alignment: CENTER;
+    -fx-text-fill: #FF3501;
+    -fx-font-family: Verdana;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+.tab:selected .tab-label {  /* selected tab label */
+    -fx-text-fill: #C9FBFF;
+}
+.tab-pane .tab:selected .focus-indicator {
+    -fx-border-width: 0;
+}
+.tab-pane .tab:hover {
+    -fx-background-color: #45515E;
+}
+.tab:hover .tab-label {
+    -fx-text-fill: #C9FBFF;
+}
+
