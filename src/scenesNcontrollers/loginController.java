@@ -1,13 +1,11 @@
-package application;
+package scenesNcontrollers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -121,7 +119,6 @@ public class loginController {
 
     // Load main stage UI.
     private void loadMainScene(String username) {
-        Rectangle2D screen = Screen.getPrimary().getBounds();
         // get the stage statusLabel belongs to
         Stage primaryStage = (Stage) statusLabel.getScene().getWindow();
         try {
@@ -132,7 +129,7 @@ public class loginController {
             mainController controller = fxmlLoader.getController();
             controller.setUsername(username);
             // swap scene
-            primaryStage.setScene(new Scene(root, 0.8*screen.getWidth(), 0.8*screen.getHeight()));
+            primaryStage.setScene(new Scene(root, 1000, 600));
         } catch (IOException e) {
             e.getCause();
         }

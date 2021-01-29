@@ -2,7 +2,12 @@ Credits:
 Freepik
 
 Color Scheme HEX:
-Scarlet logo - #ff3501
+303841 - Gunmetal (blackish grey)
+45515e - Charcoal (dark grey)
+00adb5 - Verdigris (Blue green)
+c9fbff - Celeste (Pastel cyan)
+eeeeee - Cultured (Whitish Grey)
+ff3501 - Coquelicot (Scarlet Red)
 
 
 Resource Links:
@@ -10,6 +15,7 @@ https://www.flaticon.com/
 https://www.flaticon.com/authors/pixel-perfect
 https://www.flaticon.com/authors/freepik
 https://www.flaticon.com/authors/icongeek26
+https://www.flaticon.com/authors/becris
 
 
 References:
@@ -20,4 +26,12 @@ https://www.journaldev.com/878/java-write-to-file
 https://stackoverflow.com/a/12805134
 https://tagmycode.com/snippet/9691/javafx-pass-data-between-controllers#.YA4bEugzY5s
 https://stackoverflow.com/questions/19788661/change-javafx-tab-default-look
+https://stackoverflow.com/a/10122335
 
+TableView:
+https://docs.oracle.com/javafx/2/ui_controls/table-view.htm
+https://edencoding.com/style-tableview-javafx/
+https://edencoding.com/svg-javafx/
+
+ScrollPane:
+https://riptutorial.com/javafx/example/26535/styling-the-scrollpane--
