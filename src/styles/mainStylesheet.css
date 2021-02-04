@@ -1,7 +1,7 @@
 /* CSS Stylesheet for Main Scene */
 .root {
     -fx-font-family: Tahoma;
-    -fx-font-size: 14;
+    -fx-font-size: 12;
     -fx-background-color: white;
 }
 
@@ -21,6 +21,7 @@
     -fx-font-weight: bold;
 }
 
+/* VBox */
 .vbox {
     -fx-background-color: linear-gradient(to bottom, #303841, #00ADB5);
 }
@@ -76,6 +77,26 @@
     -fx-text-fill: white;
 }
 
+/* Combo Box */
+.combo-box-base .text{  /* Combo box prompt text color */
+    -fx-fill: rgb(130.0, 130.0, 130.0);
+}
+.combo-box {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-border-color: #FF3501;
+    -fx-border-width: 0 0 0.5 0;
+    -fx-padding: 1 0 0 0;
+}
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-pref-height: 160;
+    -fx-border-color: transparent;
+}
+.combo-box .list-cell {
+    -fx-background-color: white;
+}
+
 /* Grid Pane */
 .gridCellColHeader {
     -fx-background-color: #FF3501;
@@ -85,24 +106,39 @@
 }
 .gridCellRowHeader {
     -fx-text-fill: #FF3501;
-    -fx-alignment: center-left;
-    -fx-padding: 5 0 5 5;
+    -fx-alignment: center;
+    -fx-pref-width: Infinity;
 }
 
-.combo-box-base .text{  /* Combo box prompt text color */
-    -fx-fill: rgb(130.0, 130.0, 130.0);
-}
-.combo-box {
+/* List View */
+.list-view {
     -fx-background-color: transparent;
+    -fx-font-weight: normal;
+    -fx-pref-height: 60;  /* Dictates the # of cells shown too */
+}
+.list-cell {
+    -fx-background-color: rgba(233, 233, 233, 0.3);
+}
+.list-cell:odd {
+    -fx-background-color: rgba(233, 233, 233, 0.8);
+}
+.list-cell:filled:selected:focused {  /* Selected list cell */
     -fx-text-fill: black;
+}
+.list-view:focused {  /* Selected list view */
     -fx-border-color: #FF3501;
-    -fx-border-width: 0 0 0.5 0;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 2;
 }
 
 /* ScrollPane */
 .scroll-pane {
     -fx-background-color: #EEEEEE;
     -fx-background-radius: 7 7 0 0;
+    -fx-background-insets: 2 0 0 0;
+}
+.scroll-pane .viewport { /* Main Region */
+    -fx-background-color: transparent;
 }
 .scroll-pane .corner { /* Bottom right corner between the scrollbars */
     -fx-background-color: transparent;
