@@ -3,8 +3,14 @@ package classes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -32,15 +38,15 @@ public class mainController {
     @FXML private ComboBox<DayOfWeek> weekDayPicker;
     @FXML private Label statusLabel;
 
-    protected String userDir;
+    private String userDir;
         // userDir = directory name where the user's schedules will be saved
         // schedNmae = filename of the opened schedule
-    protected final ArrayList<LocalTime> times = new ArrayList<>();
-    protected Timeslot[][] schedule = null;
+    private final ArrayList<LocalTime> times = new ArrayList<>();
+    private static Timeslot[][] schedule = null;
         // 2D array of TasksPerTime (schedule timeslot) that looks similar to schedPane.
         // row_idx = time (based on times) = schedPane's row index
         // col_idx = day of week (1-7) - 1 = schedPane's col index - 1
-    private Path schedPath = null;
+    private static Path schedPath = null;
     private final LocalTime startTime = LocalTime.of(0, 0);
     private final LocalTime endTime = LocalTime.of(23, 59);
     private final Duration timeGap = Duration.ofMinutes(30);
@@ -50,19 +56,6 @@ public class mainController {
      * store only the timeslot with task
      * time|day|tasks separated by ||
      * use formula for finding schedrows to find index of a timeslot (idx of time)
-     *
-     * SCHED FILE
-     * -open sched opens a schedfile for editing
-     * -create sched creates a new txtfild for editing
-     * -delete sched deletes a txtfile from directory
-     * -all three functions checks if schedfile is already open
-     *    - if it is, overwrite textfile to save, then close it n proceed its main operation
-     *    - if not, proceed main operation
-     *
-     * ADD TASK
-     * check if timeslot exists in schedule (search)
-     * if it does, get the timeslot obj and add task
-     * if not, add new timeslot
      *
      * EDIT TASK
      * new scene (sth like view cart, make sched protected first (global))
@@ -188,7 +181,6 @@ public class mainController {
             return;
         }
         LocalTime time = timePicker.getValue();
-        boolean isInSched = false;
         // Get the index of the chosen time in times list to serve as row # of schedPaneList.
         int row = times.indexOf(time);
         // Get the chosen day of week int value (1-7) to serve as col # of schedPaneList.
@@ -196,6 +188,104 @@ public class mainController {
         // Add task.
         schedule[row][col].addTask(taskNameField.getText());
         statusLabel.setText("Task Added!");
+        taskNameField.clear();
+    }
+
+    @FXML
+    private void handleEditTask() {
+        if (taskNameField.getText().isEmpty() ||
+                timePicker.getSelectionModel().isEmpty() ||
+                weekDayPicker.getSelectionModel().isEmpty()) {
+            statusLabel.setText("Incomplete Input!");
+            return;
+        }
+        String task = taskNameField.getText();
+        int row = times.indexOf(timePicker.getValue());
+        int col = weekDayPicker.getValue().getValue() -1;
+        boolean isRemoved = schedule[row][col].removeTask(task);
+        if (!isRemoved) {
+            statusLabel.setText("Task not found!");
+            return;
+        }
+
+        // Create edit task scene layout
+        Label label = new Label("Edit Task");
+        label.setId("header1");
+        label.setMaxWidth(Double.MAX_VALUE);
+        // Edit task name nodes
+        Label label1 = new Label("Name: ");
+        label1.setTextFill(Color.WHITE);
+        label.setMaxWidth(Double.MAX_VALUE);
+        TextField nameInput = new TextField();
+        nameInput.setText(task);
+        nameInput.getStyleClass().add("textFieldDarkBG");
+        nameInput.setMaxWidth(Double.MAX_VALUE);
+        // Edit time nodes
+        Label label2 = new Label("Time: ");
+        label2.setTextFill(Color.WHITE);
+        label2.setMaxWidth(Double.MAX_VALUE);
+        ComboBox<LocalTime> timeInput = new ComboBox<>();
+        timeInput.getItems().addAll(times);
+        timeInput.getSelectionModel().select(row);
+        timeInput.setMaxWidth(Double.MAX_VALUE);
+        timeInput.setStyle("-fx-border-color: transparent");
+        // Edit day of week nodes
+        Label label3 = new Label("Day of Week: ");
+        label3.setTextFill(Color.WHITE);
+        ComboBox<DayOfWeek> dayInput = new ComboBox<>();
+        dayInput.getItems().addAll(DayOfWeek.values());
+        dayInput.setValue(DayOfWeek.of(col+1));
+        dayInput.setMaxWidth(Double.MAX_VALUE);
+        dayInput.setStyle("-fx-border-color: transparent");
+        // GridPane for edits
+        GridPane gridPane = new GridPane();
+        gridPane.addRow(0, label1, nameInput);
+        gridPane.addRow(1, label2, timeInput);
+        gridPane.addRow(2, label3, dayInput);
+        gridPane.setHgap(10);
+        gridPane.setVgap(20);
+        gridPane.setAlignment(Pos.CENTER);
+        // Save edit button
+        Button btn = new Button("Save Edit");
+        btn.getStyleClass().add("buttonDarkBG");
+        btn.setAlignment(Pos.CENTER);
+        // VBox (scene)
+        VBox vbox = new VBox(label, gridPane, btn);
+        vbox.getStylesheets().add("styles/mainStylesheet.css");
+        vbox.getStyleClass().add("vbox");
+        vbox.setSpacing(30);
+        vbox.setPadding(new Insets(50));
+        // Swap scene
+        Scene primaryScene = taskNameField.getScene();
+        Stage stage = (Stage) taskNameField.getScene().getWindow();
+        stage.setScene(new Scene(vbox, 350, 400));
+        // Successful edit actions
+        btn.setOnAction(e -> {
+            schedule[getTimeIdx(timeInput.getValue())][dayInput.getValue().getValue()-1].
+                    addTask(nameInput.getText());
+            stage.setScene(primaryScene);
+        });
+        statusLabel.setText("Task edits processed successfully!");
+        taskNameField.clear();
+    }
+
+    @FXML
+    private void handleRemoveTask() {
+        if (taskNameField.getText().isEmpty() ||
+                timePicker.getSelectionModel().isEmpty() ||
+                weekDayPicker.getSelectionModel().isEmpty()) {
+            statusLabel.setText("Incomplete Input!");
+            return;
+        }
+        String task = taskNameField.getText();
+        int row = times.indexOf(timePicker.getValue());
+        int col = weekDayPicker.getValue().getValue() -1;
+        boolean isRemoved = schedule[row][col].removeTask(task);
+        if (!isRemoved) {
+            statusLabel.setText("Task not found!");
+        } else {
+            statusLabel.setText("Task removed successfully!");
+        }
         taskNameField.clear();
     }
 
@@ -231,7 +321,7 @@ public class mainController {
     }
 
     // Save schedule in an existing text file by writing the contents to schedPath.
-    private void saveSched() {
+    public static void saveSched() {
         StringBuilder content = new StringBuilder();
         String temp;
         // Format for each timeslot: <time>|<day>|<tasks separated by ::>
@@ -263,9 +353,11 @@ public class mainController {
     private void loadSched() {
         FileInputStream inputStream = null;
         Scanner sc = null;
+        boolean flag = false;
         try {
             inputStream = new FileInputStream(String.valueOf(schedPath));
             sc = new Scanner(inputStream, StandardCharsets.UTF_8);
+            if (sc.hasNextLine()) flag = true;
             while (sc.hasNextLine()) {
                 // Get timeslot attributes (time, day, tasks)
                 String[] items = sc.nextLine().split("\\|");
@@ -288,6 +380,7 @@ public class mainController {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            if (!flag) initializeSchedule();
             if (inputStream != null) {
                 try { inputStream.close(); }
                 catch (IOException e) { e.printStackTrace(); }

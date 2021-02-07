@@ -1,3 +1,4 @@
+import classes.mainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,12 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("assets\\logo.png"));  // Set window icon
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        mainController.saveSched();
+        super.stop();
     }
 
     public static void main(String[] args) {

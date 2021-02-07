@@ -76,8 +76,8 @@
                         <ComboBox fx:id="timePicker" promptText="-Time-   " HBox.hgrow="ALWAYS" />
                         <ComboBox fx:id="weekDayPicker" layoutX="261.0" layoutY="10.0" promptText="-DayOfWeek-" HBox.hgrow="ALWAYS" />
                         <Button id="buttonLightBG" fx:id="addTaskBtn" alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddTask" prefWidth="70.0" styleClass="buttonLightBG" text="Add" HBox.hgrow="ALWAYS" />
-                        <Button id="buttonLightBG" fx:id="editTaskBtn" alignment="CENTER" layoutX="435.0" layoutY="10.0" minWidth="-Infinity" mnemonicParsing="false" prefWidth="70.0" styleClass="buttonLightBG" text="Edit" HBox.hgrow="ALWAYS" />
-                        <Button id="buttonLightBG" fx:id="removeTaskBtn" alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" prefWidth="95.0" styleClass="buttonLightBG" text="Remove" HBox.hgrow="ALWAYS" />
+                        <Button id="buttonLightBG" fx:id="editTaskBtn" alignment="CENTER" layoutX="435.0" layoutY="10.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEditTask" prefWidth="70.0" styleClass="buttonLightBG" text="Edit" HBox.hgrow="ALWAYS" />
+                        <Button id="buttonLightBG" fx:id="removeTaskBtn" alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRemoveTask" prefWidth="95.0" styleClass="buttonLightBG" text="Remove" HBox.hgrow="ALWAYS" />
                         <Region layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>

@@ -19,6 +19,8 @@
     -fx-font-size: 22px;
     -fx-text-fill: #C9FBFF;
     -fx-font-weight: bold;
+    -fx-pref-width: Infinity;
+    -fx-alignment: center;
 }
 
 /* VBox */
@@ -82,7 +84,7 @@
     -fx-fill: rgb(130.0, 130.0, 130.0);
 }
 .combo-box {
-    -fx-background-color: transparent;
+    -fx-background-color: white;
     -fx-text-fill: black;
     -fx-border-color: #FF3501;
     -fx-border-width: 0 0 0.5 0;
@@ -161,77 +163,6 @@
 }
 .scroll-bar .decrement-button, .scroll-bar .increment-button {
     -fx-padding: 2;
-}
-
-/* Table View */
-.table-view {
-    -fx-background-color: transparent;
-    -fx-font-size: 12;
-}
-.table-view .column-header-background .filler {  /* Right header area after column headers (w/ content) */
-    -fx-background-color: transparent;
-}
-.table-view .corner {  /* Bottom right corner between the scrollbars */
-    -fx-background-color: transparent;
-}
-.table-view .column-header-background{  /* General column header background */
-    -fx-background-color: red;
-    -fx-background-radius: 7 7 0 0;  /* top left, top right, bottom right, bottom left */
-    -fx-background-insets: 0 11 0 0;  /* subtract top right area above scroll bar after header */
-    -fx-padding: 1 0 1 0;
-}
-.table-view .column-header {  /* Column header (w/ content) */
-    -fx-background-color: transparent;
-}
-.column-header-background .table-column .label { /* column header label */
-    -fx-text-fill: white;
-    -fx-alignment: center;
-    -fx-font-weight: bold;
-}
-.table-view .table-cell{  /* table cells */
-    -fx-border-color: transparent;
-    -fx-padding: 2 0 2 5;
-}
-.table-row-cell:hover {
-    -fx-background-color: #00ADB5;
-    -fx-text-background-color: #EEEEEE;
-}
-.table-row-cell:odd{
-    -fx-background-color: white;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0;
-}
-.table-row-cell:even{
-    -fx-background-color: #EEEEEE;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0;
-}
-/* Table view scrollbars (space where scrollbar moves) */
-.table-view .virtual-flow .scroll-bar:vertical,
-.table-view .virtual-flow .scroll-bar:vertical .track,
-.table-view .virtual-flow .scroll-bar:vertical .track-background,
-.table-view .virtual-flow .scroll-bar:horizontal,
-.table-view .virtual-flow .scroll-bar:horizontal .track,
-.table-view .virtual-flow .scroll-bar:horizontal .track-background {
-    -fx-background-color: transparent;
-} /* up, down, left, right button of scrollbars */
-.table-view .virtual-flow .scroll-bar .increment-button,
-.table-view .virtual-flow .scroll-bar .decrement-button {
-    -fx-opacity: 0;
-    -fx-padding: 2;
-}
-/* thumb refers to the scrollbar itself */
-.table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color:  #45515E;
-    -fx-opacity: 0.3;
-}
-.table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color:  #45515E;
-    -fx-opacity: 0.3;
-}
-.table-row-cell:row-selection {  /* highlight the selected row */
-    -fx-background-color: #C9FBFF;
-    -fx-background-radius: 15;
 }
 
 /* Tab Pane */

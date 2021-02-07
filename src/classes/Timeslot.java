@@ -47,6 +47,13 @@ public class Timeslot {
     public void addTask(String name) {
         this.tasksList.add(name);
     }
-
+    public boolean removeTask(String name) {
+        if (tasksList.contains(name)) {
+            tasksList.remove(name);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
