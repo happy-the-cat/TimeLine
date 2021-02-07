@@ -400,14 +400,15 @@ public class mainController {
     // Setter for username; to be called in Main class after loading the mainController.
     // Also checks if a directory of username exists, if not, it creates one.
     public void setUserDirectory(String username) {
-        this.userDir = "databases/" + username + "/";
-        if (!Files.isDirectory(Path.of(username))) {
+        this.userDir = "databases/" + username;
+        if (!Files.isDirectory(Path.of(userDir))) {
             try {
-                Files.createDirectory(Path.of(username));
+                Files.createDirectory(Path.of(userDir));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        userDir = userDir.concat("/");
     }
 
     private void disableTaskControls(boolean bool) {
