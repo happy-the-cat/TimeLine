@@ -1,4 +1,4 @@
-package scenesNcontrollers;
+package classes;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +25,7 @@ public class loginController {
     private void handleSignup() {
         boolean flag = false;
         String username = usernameField.getText();
-        if (username.isBlank() && passwordField.getText().isBlank()) return;
+        if (username.isEmpty() && passwordField.getText().isEmpty()) return;
         if (!statusLabel.isVisible()) statusLabel.setVisible(true);
         // Check if inputted username exists already (taken).
         for (String[] userpass : database) {
@@ -50,7 +50,7 @@ public class loginController {
     @FXML  // Handle login button; user attempts login to existing account.
     private void handleLogin() {
         boolean flag = false;
-        if (usernameField.getText().isBlank() && passwordField.getText().isBlank()) return;
+        if (usernameField.getText().isEmpty() && passwordField.getText().isEmpty()) return;
         if (!statusLabel.isVisible()) statusLabel.setVisible(true);
         // Validate inputted username and password.
         for (String[] userpass: database) {
@@ -108,7 +108,7 @@ public class loginController {
 
     // Create directory with the given name inside the "databases" directory.
     private void createDirectory(String dirName) {
-        File dir = new File("databases\\" + dirName);  // Create File object
+        File dir = new File("databases/" + dirName);  // Create File object
         boolean bool = dir.mkdir();  // Create directory
         if (bool) {
             System.out.println("Directory creates successfully.");
@@ -123,11 +123,12 @@ public class loginController {
         Stage primaryStage = (Stage) statusLabel.getScene().getWindow();
         try {
             // load loginUI.fxml
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainUI.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("../scenes/mainUI.fxml"));
             Parent root = fxmlLoader.load();
             // pass username to loginUI.fxml's controller
             mainController controller = fxmlLoader.getController();
-            controller.setUsername(username);
+            controller.setUserDirectory(username);
             // swap scene
             primaryStage.setScene(new Scene(root, 1000, 600));
         } catch (IOException e) {
@@ -139,7 +140,7 @@ public class loginController {
     private void initialize() {
         statusLabel.setText("");
         statusLabel.setVisible(false);
-        dbFilename = "databases\\_general.db";
+        dbFilename = "databases/_general.db";
         readDatabaseFile();
     }
 

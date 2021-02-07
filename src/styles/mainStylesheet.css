@@ -107,6 +107,7 @@
 .gridCellRowHeader {
     -fx-text-fill: #FF3501;
     -fx-alignment: center;
+    -fx-padding: 0;
     -fx-pref-width: Infinity;
 }
 
@@ -114,7 +115,7 @@
 .list-view {
     -fx-background-color: transparent;
     -fx-font-weight: normal;
-    -fx-pref-height: 60;  /* Dictates the # of cells shown too */
+    -fx-pref-height: 55;  /* Dictates the # of cells shown too */
 }
 .list-cell {
     -fx-background-color: rgba(233, 233, 233, 0.3);
@@ -134,8 +135,6 @@
 /* ScrollPane */
 .scroll-pane {
     -fx-background-color: #EEEEEE;
-    -fx-background-radius: 7 7 0 0;
-    -fx-background-insets: 2 0 0 0;
 }
 .scroll-pane .viewport { /* Main Region */
     -fx-background-color: transparent;

@@ -24,13 +24,13 @@ https://www.w3schools.com/java/java_files_create.asp
 https://www.journaldev.com/881/java-append-to-file
 https://www.journaldev.com/878/java-write-to-file
 https://stackoverflow.com/a/12805134
-https://tagmycode.com/snippet/9691/javafx-pass-data-between-controllers#.YA4bEugzY5s
+https://tagmycode.com/snippet/9691/javafx-pass-data-between-scenes#.YA4bEugzY5s
 https://stackoverflow.com/questions/19788661/change-javafx-tab-default-look
 https://stackoverflow.com/a/10122335
-https://docs.oracle.com/javase/9/docs/api/java/time/DayOfWeek.html
-https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ComboBox.html
-https://docs.oracle.com/javase/9/docs/api/java/time/LocalTime.html
 https://stackoverflow.com/a/49335829
+https://docs.oracle.com/en/java/javase/11/docs/api/index.html
+https://mkyong.com/java/java-how-to-create-and-write-to-a-file/
+https://www.baeldung.com/java-read-lines-large-file
 
 TableView:
 https://docs.oracle.com/javafx/2/ui_controls/table-view.htm
