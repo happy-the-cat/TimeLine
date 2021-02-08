@@ -324,6 +324,7 @@ public class mainController {
     public static void saveSched() {
         StringBuilder content = new StringBuilder();
         String temp;
+        if (schedPath == null) return;
         // Format for each timeslot: <time>|<day>|<tasks separated by ::>
         // General delimiter:  "|"     Tasks delimiter: "::"
         for (Timeslot[] time : schedule) {
