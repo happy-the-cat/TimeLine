@@ -37,6 +37,7 @@ public class mainController {
     @FXML private ComboBox<LocalTime> timePicker;
     @FXML private ComboBox<DayOfWeek> weekDayPicker;
     @FXML private Label statusLabel;
+    @FXML private ScrollPane scrollPane;
 
     private String userDir;
         // userDir = directory name where the user's schedules will be saved
@@ -51,20 +52,7 @@ public class mainController {
     private final LocalTime endTime = LocalTime.of(23, 59);
     private final Duration timeGap = Duration.ofMinutes(30);
 
-
-    /** TODO
-     * store only the timeslot with task
-     * time|day|tasks separated by ||
-     * use formula for finding schedrows to find index of a timeslot (idx of time)
-     *
-     * EDIT TASK
-     * new scene (sth like view cart, make sched protected first (global))
-     * check if task exists (search schedule)
-     * if yes, remove task in the timeslot obj, then add new task
-     * if not, update status bout it then do nothing
-     *
-     *
-     */
+    /**** FXML Related Methods ****/
 
     @FXML
     private void initialize() {
@@ -189,6 +177,9 @@ public class mainController {
         schedule[row][col].addTask(taskNameField.getText());
         statusLabel.setText("Task Added!");
         taskNameField.clear();
+        // Focus on task
+        //ScrollPane scrollPane = (ScrollPane) schedPane.getParent().getParent();
+        scrollPane.setVvalue(row*55 / schedPane.getHeight());
     }
 
     @FXML
